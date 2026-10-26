@@ -1,0 +1,16 @@
+(server console during the lab runs; unrelated startup lines removed)
+[INFO] got prompt
+[INFO] got prompt
+[INFO] loaded completely;  235.84 MB loaded, full load: True
+[INFO] loaded completely;  3278.81 MB loaded, full load: True
+[INFO] loaded completely;  319.11 MB loaded, full load: True
+[INFO] Prompt executed in 112.21 seconds
+[INFO] got prompt
+[INFO] Prompt executed in 0.00 seconds
+[INFO] got prompt
+[INFO] Prompt executed in 0.00 seconds
+[INFO] got prompt
+[INFO] loaded completely;  235.84 MB loaded, full load: True
+[INFO] loaded completely;  3278.81 MB loaded, full load: True
+[INFO] loaded completely;  319.11 MB loaded, full load: True
+[INFO] Prompt executed in 61.45 seconds

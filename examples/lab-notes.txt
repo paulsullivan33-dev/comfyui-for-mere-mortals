@@ -1,0 +1,112 @@
+The lab — one real install, one small
+machine, no graphics card
+================================================================
+
+The lab is ComfyUI as its source ships
+it, installed on the build machine (an
+Ubuntu 24.04 sandbox, 2 CPUs, 7.7 GB
+RAM) and run entirely on the CPU:
+
+  * ComfyUI 0.42.0 on Python 3.12.3,
+    PyTorch 2.14.1+cpu, installed into a
+    fresh virtual environment with pip
+    (torch's CPU build, then the
+    project's requirements.txt).
+  * Started as:
+      venv/bin/python main.py --cpu \
+        --listen 127.0.0.1 --port 8188
+    and driven only through its API —
+    no mouse was involved in any
+    transcript.
+  * One checkpoint, downloaded from
+    Hugging Face (the public SD 1.5
+    mirror): v1-5-pruned-emaonly
+    .safetensors, 4,265,146,304 bytes,
+    placed in models/checkpoints/.
+
+What the lab ran, in
+comfyui-lab/transcripts/:
+
+  * t00 versions: Python 3.12.3,
+    torch 2.14.1+cpu, ComfyUI 0.42.0.
+  * t01 the server's startup log: device
+    cpu, the GUI line, the port.
+  * t02 the API answering: /system_stats
+    (version, device "cpu"), the web
+    page's title, and /object_info
+    counting 1,014 node types known to
+    a stock install — every node this
+    guide's chapters use, present.
+  * t03 the refusal: the first-workflow
+    graph with the checkpoint name
+    replaced by an invented one. HTTP
+    400, value_not_in_list, the server
+    naming the one checkpoint it does
+    have. Validation happens before
+    queueing, exactly as chapter 10
+    describes.
+  * t04 generation for real: the
+    classic graph (checkpoint loader,
+    two CLIP encoders, empty latent
+    256x256, KSampler euler/normal,
+    4 steps, cfg 7.0, seed 42, VAE
+    decode, save) posted to /prompt and
+    finished — success after about
+    110 seconds, output
+    lab-first_00001_.png. The picture
+    itself is a four-step smudge that
+    barely suggests the teapot; chapter
+    5 prints that verdict rather than
+    cropping it away.
+  * t05 twice more: the identical
+    workflow returned in 5 seconds from
+    the cache with the output file
+    byte-identical (sha256 checked
+    before and after); with only the
+    seed changed to 43, a new file,
+    lab-first_00002_.png, different
+    hash, 65 seconds. Both outputs are
+    real PNGs, 256x256.
+  * t06 the PNG's embedded recipe:
+    read-embedded.py found the 'prompt'
+    chunk — all 7 nodes, the lab's
+    prompt text and seed 42 inside.
+    No 'workflow' chunk: the job came
+    through the API, and chapter 9
+    explains the difference.
+  * t07 the server console across the
+    runs: model loads (3,278.81 MB for
+    the diffusion model), 112.21 s for
+    the first prompt, 0.00 s for the
+    cached repeats, 61.45 s for the
+    seed-changed run.
+
+The sandbox's rules, discovered by
+running into them:
+
+  * pip unpacks into /tmp, which on
+    this machine is a small tmpfs; the
+    first install died with "No space
+    left on device" while the big disk
+    showed 185 GB free. Setting TMPDIR
+    to a folder on the real disk fixed
+    it. Remembered in chapter 3's
+    spirit if not its letter: the
+    error names the wrong disk.
+  * The machine's network egress is
+    intermittent; large downloads stall
+    and resume. The checkpoint took
+    three attempts (the last with
+    curl's resume) — the guide's
+    procedures do not depend on this,
+    but the lab's afternoon did.
+
+Documented only (not run): everything
+past the first small generation —
+img2img and inpainting, ControlNet,
+LoRAs, split-model loading, custom
+nodes and the Manager, GPU running of
+any kind, and the browser canvas
+beyond its title (the API is the
+verified face; the canvas talks to
+the same server).

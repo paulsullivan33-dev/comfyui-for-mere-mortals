@@ -1,0 +1,17 @@
+$ python3 read-embedded.py output/lab-first_00001_.png
+text chunks found: ['prompt']
+'prompt' chunk: 7 nodes
+  node 3: KSampler
+      seed = 42
+  node 4: CheckpointLoaderSimple
+      ckpt_name = 'v1-5-pruned-emaonly.safetensors'
+  node 5: EmptyLatentImage
+  node 6: CLIPTextEncode
+      text = 'a red teapot on a wooden table, photograph'
+  node 7: CLIPTextEncode
+      text = 'blurry, low quality'
+  node 8: VAEDecode
+  node 9: SaveImage
+      filename_prefix = 'lab-first'
+'workflow' chunk present: False
+(exit code 0)

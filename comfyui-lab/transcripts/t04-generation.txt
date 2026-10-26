@@ -1,0 +1,11 @@
+$ python3 run-workflow.py workflows/first-workflow.json
+POST /prompt -> 200
+{
+  "prompt_id": "8a09fcd2-bc4e-4e8b-a361-49aee21b6917",
+  "number": 1,
+  "node_errors": {}
+}
+queued as prompt_id 8a09fcd2-bc4e-4e8b-a361-49aee21b6917; polling /history ...
+after 110s: status = success
+output image: lab-first_00001_.png (node 9, type output)
+(exit code 0)

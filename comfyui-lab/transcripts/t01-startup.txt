@@ -1,0 +1,8 @@
+$ venv/bin/python main.py --cpu --listen 127.0.0.1 --port 8188
+(startup log, key lines)
+[INFO] Total VRAM 7935 MB, total RAM 7935 MB
+[INFO] pytorch version: 2.14.1+cpu
+[INFO] Device: cpu
+[INFO] ComfyUI version: 0.42.0
+[INFO] Starting server
+[INFO] To see the GUI go to: http://127.0.0.1:8188

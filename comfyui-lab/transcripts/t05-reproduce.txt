@@ -1,0 +1,38 @@
+$ sha256sum output/lab-first_00001_.png
+b88bc1a0ad4a83a9c791a4ae49721bce4054de1ad8cb100140badf75fb74c100  /home/hatch/workspace/comfyui-scratch/output/lab-first_00001_.png
+
+$ python3 run-workflow.py workflows/first-workflow.json   (identical repeat)
+POST /prompt -> 200
+{
+  "prompt_id": "c1d99cd1-839c-45bb-ba16-cb4e2c7613b3",
+  "number": 3,
+  "node_errors": {}
+}
+queued as prompt_id c1d99cd1-839c-45bb-ba16-cb4e2c7613b3; polling /history ...
+after 5s: status = success
+output image: lab-first_00001_.png (node 9, type output)
+(exit code 0)
+
+$ sha256sum output/lab-first_00001_.png   (after the repeat)
+b88bc1a0ad4a83a9c791a4ae49721bce4054de1ad8cb100140badf75fb74c100  /home/hatch/workspace/comfyui-scratch/output/lab-first_00001_.png
+
+$ python3 run-workflow.py workflows/first-workflow.json --seed 43   (only the seed changes)
+seed overridden to 43
+POST /prompt -> 200
+{
+  "prompt_id": "75d1f749-af91-40bc-a468-cfed7f379523",
+  "number": 4,
+  "node_errors": {}
+}
+queued as prompt_id 75d1f749-af91-40bc-a468-cfed7f379523; polling /history ...
+after 65s: status = success
+output image: lab-first_00002_.png (node 9, type output)
+(exit code 0)
+
+$ sha256sum output/lab-first_*.png
+b88bc1a0ad4a83a9c791a4ae49721bce4054de1ad8cb100140badf75fb74c100  /home/hatch/workspace/comfyui-scratch/output/lab-first_00001_.png
+89413c087459c9faa355ce1f1c9c92f4defa7efdb009ff843dbde6f5f1c318c5  /home/hatch/workspace/comfyui-scratch/output/lab-first_00002_.png
+
+$ python3 -c "..."  (confirm the outputs are real PNGs, and their size)
+lab-first_00001_.png PNG (256, 256)
+lab-first_00002_.png PNG (256, 256)

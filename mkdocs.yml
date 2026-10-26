@@ -1,0 +1,28 @@
+site_name: ComfyUI for Mere Mortals
+site_description: A node graph for making pictures with AI models. Wiring loaders, prompts, samplers and savers together on one canvas, running the graph by hand and by script, and knowing exactly what each node did.
+site_url: https://paulsullivan33-dev.github.io/comfyui-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What ComfyUI Is: what-comfyui-is.md
+  - The Mental Model: the-mental-model.md
+  - Installing ComfyUI: installing-comfyui.md
+  - Models and Folders: models-and-folders.md
+  - Your First Workflow: your-first-workflow.md
+  - Samplers and Settings: samplers-and-settings.md
+  - Img2img and Inpainting: img2img-and-inpainting.md
+  - ControlNet — Steering the Picture: controlnet.md
+  - Saving and Sharing Workflows: saving-and-sharing-workflows.md
+  - The API and Headless Running: the-api-and-headless.md
+  - Custom Nodes and the Manager: custom-nodes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

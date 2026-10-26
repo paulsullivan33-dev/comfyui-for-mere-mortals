@@ -1,0 +1,30 @@
+$ curl -s http://127.0.0.1:8188/system_stats | python3 -m json.tool | head -20
+{
+  "system": {
+    "os": "linux",
+    "comfyui_version": "0.42.0",
+    "ram_total": 8320602112,
+    "ram_free": 967024640
+  },
+  "devices": [
+    {
+      "name": "cpu",
+      "type": "cpu"
+    }
+  ]
+}
+
+$ curl -s http://127.0.0.1:8188/ | grep -o "<title>[^<]*</title>"
+<title>ComfyUI</title>
+
+$ curl -s http://127.0.0.1:8188/object_info | python3 -c "..."  (count the nodes the server knows)
+nodes known to the server: 1014
+  CheckpointLoaderSimple: present
+  CLIPTextEncode: present
+  EmptyLatentImage: present
+  KSampler: present
+  VAEDecode: present
+  SaveImage: present
+  LoadImage: present
+  ControlNetLoader: present
+  LoraLoader: present
